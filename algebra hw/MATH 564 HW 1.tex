@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+%\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+%\usepackage{mathtools}
+\usepackage{enumerate}
+%\usepackage{natbib}
+%\usepackage{lmodern}
+%\usepackage{relsize}
+\usepackage{graphicx}
+  \DeclareGraphicsExtensions{.pdf,.png}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=4cm]{geometry}
+%\usepackage[usenames,dvipsnames]{xcolor}%\usepackage{tikz}%\usepackage{verbatim}%\usetikzlibrary{patterns}%\usetikzlibrary{arrows}
+\usepackage{amsfonts}
+%\usepackage{xfrac}
+\usepackage{bm}%\usepackage{makeidx}%\usepackage{xfrac}%\usepackage[perpage,para,symbol*]{footmisc}
+%Quick blackboard bold
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\EE}{\mathbb{E}}
+%ABSOLUTE VALUE BRACKETS
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+%SET BRACKETS
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+%PARENTHESES ( ) 
+%\newcommand{\pars}[1]{\left( #1 \right)}
+%INNER PRODUCT BRACKETS
+\newcommand{\ip}[1]{\left\langle #1 \right\rangle}
+%QUICK 2x2, 3x3 MATRICES, QUICK COLUMN
+%\newcommand{\tmatrix}[4]{\begin{pmatrix} #1&#2\\#3&#4\end{pmatrix}}
+%\newcommand{\thmatrix}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9 \end{pmatrix}}
+%\newcommand{\col}[2]{\begin{pmatrix}#1\\#2 \end{pmatrix}}
+%PROOF ENVIRONMENT
+\newcommand{\pf}{\noindent\textit{Proof. }}
+\newcommand{\rdr}{$(\Rightarrow)$ }
+\newcommand{\ldr}{$(\Leftarrow)$ }
+%\newcommand{\tomb}{\hfill $\mathlarger{\mathlarger{\boxtimes}}$ \vspace{10mm}}
+\newcommand{\qed}{\hfill $\blacksquare$ \\}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\la}{\lambda}
+\newcommand{\id}{\text{id}}
+\newcommand{\lin}{\noindent\rule{12.6cm}{0.4pt}}
+\newcommand{\s}{\vspace{2mm}}
+\renewcommand{\d}{\partial}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\hooklongleftarrow}{\longleftarrow\joinrel\rhook}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Sean Eli}
+\date{\today}
+\title{Advanced Algebra II HW1}
+
+
+%\[\begin{tikzcd}
+%A_f \arrow{r}{\varphi_f} \arrow[swap]{d}{\varrho_x^f} & B_g \arrow{d}{\varrho_x^g} \\
+%A_x \arrow{r}{\varphi_y} & B_y
+%\end{tikzcd}
+%\]
+
+\begin{document}
+\maketitle
+
+
+\noindent\textbf{Problem 1.} Show $p(x) = x^3-2x-2$ is irreducible over $\QQ$. Let $\theta$ be a root of this polynomial. Compute 
+\[(1+\theta)(1+\theta + \theta^2)\qquad\text{and}\qquad \frac{1+\theta}{1+\theta+\theta^2}\] in $\QQ(\theta)$, as $\QQ$-linear combinations of $1,\theta,$ and $\theta^2$.\s
+
+\noindent \textit{Solution.} Since $2$ divides the non-leading coefficients of $p(x)$, but $4$ does not divide the ``1" coefficient, Eisenstein's criterion shows that $p(x)$ is irreducible in $\QQ[x]$. Let $\theta \in \CC$ be a root of $p(x)$. Since $p(x)$ is irreducible and has degree 3, we know that
+\[ \QQ(\theta) = \set{a + b\theta + c\theta^2:\,\, a,b,c,\in \QQ},\] and in this field that $\theta^3 = 2\theta + 2$. Thus
+\[(1+\theta)(1+\theta + \theta^2) = \theta^3 + 2\theta^2 + 2\theta + 1 = 2\theta^2 + 4\theta + 3.\] 
+Next, since $p(x)$ is irreducible of degree 3, it is relatively prime to all quadratic polynomials in $\QQ[x]$. Thus, from the division algorithm, there exist polynomials $a(x), b(x) \in \QQ[x]$ with $a(x)(1+x+x^2) + b(x)p(x) = 1$. Using long division twice, we find
+\begin{align*}
+x^3 - 2x- 2 &= (x^2+x+1)(x-1) - (2x+1),\\
+4(x^2+x+1) &= -(2x+1)\left(-2x - 1\right) + 3.
+\end{align*}
+Solving the second equation for $3$ and eliminating a $2x+1$ term using the first equation gives
+\[3 = (2x+1)p(x) + (-2x^2 + x + 5)(x^2+x+1).\] 
+Since $\QQ(\theta) \cong \QQ[x] / \ip{p(x)}$, the above equation shows that $(1+\theta+\theta^2)^{-1} = \frac{1}{3}(-2\theta^2 + \theta + 5)$ in $\QQ(\theta)$. Thus
+\[\frac{1+\theta}{1+\theta+\theta^2} = \frac{(1+\theta) (-2\theta^2 + \theta + 5)}{3} = \frac{-2\theta^3 - \theta^2 + 6\theta + 5}{3} = \frac{-\theta^2 + 2\theta + 1}{3}.\] \qed
+
+
+\noindent\textbf{Problem 2.} Let $K/F$ be a field extension of degree $n$. Show that for any $\alpha \in K$, the ``left multiplication by $\alpha$" map $m_\alpha :K\to K$ given by $x\mapsto \alpha \cdot x$ is an $F$-linear transformation. Deduce that $K$ is isomorphic to a subfield of the ring Mat$_n(F)$ of $n\times n$ matrices over $F$.\s
+
+\pf Let $\alpha \in K$: additivity of $m_\alpha$ follows from the distributive law in $K$, and $F$-scalar multiplication follows from commutative multiplication in $K$ and $F$. Thus $m_\alpha : K\to K$ is $F$-linear. By fixing a basis $B = \set{b_1,...,b_n}$ for $K$ over $F$, we can represent each $m_\alpha$ as an $n\times n$ diagonal matrix $[m_\alpha]_B$ with entries in $F$. The function $\phi : K \to $Mat$_n(F)$ given by $\alpha \mapsto [m_\alpha]_B$ is a ring homomorphism (since by definition of $m_a$, we have $m_a \circ m_b = m_b \circ m_a =  m_{ab}$ and $m_a + m_b = m_{a+b}$ for any $a,b \in K$.) Injectivity of $\phi$ follows since if $m_a$ is the zero matrix, then $a b_1 + ... + ab_n = 0$, and we have $a = 0$. \qed
+
+
+\noindent \textbf{Problem 3.} Show that $p(x) = x^4 + 3x + 3$ is irreducible over $\QQ(\sqrt[3]{2})$.\s
+
+\pf Since $3$ divides the non-leading coefficients of $p(x)$, but $9$ does not divide the constant coefficient, Eisenstein's criterion shows that $p(x)$ is irreducible in $\QQ[x]$. Then if $\theta$ is a root of $p(x)$, $[\QQ(\theta): \QQ] = 4$. Since the minimal polynomial of $\sqrt[3]{2}$ over $\QQ$ is $x^3-2$, it follows that $[\QQ(\sqrt[3]{2}):\QQ] = 3$. %: this tells us that $\sqrt[3]{2} \not\in \QQ(\theta)$, otherwise the tower law implies $3$ divides $4$. 
+Since $\QQ(\sqrt[3]{2})$ and $ \QQ(\theta)$ are both subfields of $ \QQ(\theta,\sqrt[3]{2})$, by the tower law, both 3 and 4 divide $[\QQ(\theta, \sqrt[3]{2}):\QQ]$. Therefore 12 divides $[\QQ(\theta, \sqrt[3]{2}):\QQ]$, and since 
+\[[\QQ(\theta, \sqrt[3]{2}):\QQ] = [\QQ(\theta, \sqrt[3]{2}):\QQ(\sqrt[3]{2})] \cdot [\QQ(\sqrt[3]{2}):\QQ] = [\QQ(\theta, \sqrt[3]{2}):\QQ(\sqrt[3]{2})] \cdot 3,\]
+it follows that 4 divides $[\QQ(\theta, \sqrt[3]{2}):\QQ(\sqrt[3]{2})].$ However this is at most 4 since $p(x)$ is degree $4$, therefore $[\QQ(\theta, \sqrt[3]{2}):\QQ(\sqrt[3]{2})]=4.$ It follows that $p(x)$ is the minimal polynomial for $\theta$ over $\QQ(\sqrt[3]{2})$, which is irreducible. \qed
+
+
+\s
+\noindent \textbf{Problem 4.} Let $K/F$ be a field extension, and let $\alpha \in K$. Prove that if $[F(\alpha):F]$ is odd, then $F(\alpha) = F(\alpha^2)$. \s
+
+\pf Notice $F \subset F(\alpha^2) \subset F(\alpha)$. By the tower law,
+\[[F(\alpha):F] = [F(\alpha):F(\alpha^2)] \cdot [F(\alpha^2):F],\] therefore $[F(\alpha):F(\alpha^2)]$ must be odd. Since $F(\alpha^2) \subset F(\alpha) = F(\alpha^2,\alpha)$, and $\alpha$ is a root of $f(x) = x^2 - (\alpha^2) \in F(\alpha^2)[x]$, we conclude $[F(\alpha):F(\alpha^2)]$ is at most two. Since it is odd, it must be 1, therefore $F(\alpha) = F(\alpha^2)$. \qed
+
+
+\newpage
+
+\noindent \textbf{Problem 5.} Let $K_1$ and $K_2$ be finite extensions of a field $F$, contained in a field $K$. Prove that the $F$-algebra $K_1 \otimes_F K_2$ is a field iff $[K_1K_2 : F] = [K_1:F]\,[K_2:F].$\s
+
+\pf We may write $K_1 = F(a_1,...,a_n)$ and let $K_2 = F(b_1,...,b_m)$ where $\set{a_i}$ and $\set{b_j}$ are vector space bases. Then the elements $\set{a_ib_j:i=1,...,n, j=1,...,m}$ span $K_1K_2$.\s
+
+\noindent The $F$-bilinear map $K_1\times K_2 \to K_1K_2$ given by $(x,y)\mapsto xy$ induces an $F$-linear map $\phi: K_1 \otimes_F K_2 \to K_1K_2$, by the universal property of the tensor product of modules. The map $\phi$ is surjective, since $a_i\otimes b_j \mapsto a_ib_j$, and therefore the (linear span of the) spanning set $\set{a_ib_j}$ is in the image. Moreover, $\phi$ is a ring homomorphism, since for generic tensors $\sum_{i=1}^\ell x_i\otimes y_i$ and $\sum_{j=1}^k z_j \otimes w_j$,
+\begin{align*}
+\phi\left( \sum_{i=1}^\ell x_i\otimes y_i \,\,\cdot \,\, \sum_{j=1}^k z_j \otimes w_j\right) = \phi\left( \sum_{i,j} x_iz_j\otimes y_iw_j \right)
+&= \sum_{i,j}\phi\left(  x_iz_j\otimes y_iw_j \right)\\
+&= \sum_{i,j} x_iy_iz_jw_j\\
+&= \sum_{i=1}^\ell x_iy_i\,\,\cdot\,\,\sum_{j=1}^k z_jw_j\\
+&= \phi\left( \sum_{i=1}^\ell x_i\otimes y_i \right) \cdot \,\, \phi \left(\sum_{j=1}^k z_j \otimes w_j\right) 
+\end{align*}
+Recall the dimension of $K_1\otimes_F K_2$ over $F$ is $mn$. Since $\phi$ is surjective, then $[K_1K_2 : F] = mn$ iff $\phi$ is a linear isomorphism, i.e. injective. Since $\phi$ is a ring homomorphism, it follows that $[K_1K_2 : F] = mn$ iff $K_1\otimes_F K_2 \cong K_1K_2$ as rings. This proves the claim since $\ker\,\phi \ne 0$ if and only if $K_1\otimes_F K_2$ has a nontrivial ideal, and is not a field. \qed
+
+
+
+
+%%%
+%\bibliographystyle{plain}
+%%%
+%\bibliography{mybib}
+
+
+\hfill \eject \end{document}
