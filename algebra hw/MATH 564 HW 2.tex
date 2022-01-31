@@ -1,0 +1,170 @@
+\documentclass[12pt]{article}
+%\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+%\usepackage{mathtools}
+\usepackage{enumerate}
+%\usepackage{natbib}
+%\usepackage{lmodern}
+%\usepackage{relsize}
+\usepackage{graphicx}
+  \DeclareGraphicsExtensions{.pdf,.png}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=4cm]{geometry}
+%\usepackage[usenames,dvipsnames]{xcolor}%\usepackage{tikz}%\usepackage{verbatim}%\usetikzlibrary{patterns}%\usetikzlibrary{arrows}
+\usepackage{amsfonts}
+%\usepackage{xfrac}
+\usepackage{bm}%\usepackage{makeidx}%\usepackage{xfrac}%\usepackage[perpage,para,symbol*]{footmisc}
+%Quick blackboard bold
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\EE}{\mathbb{E}}
+%ABSOLUTE VALUE BRACKETS
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+%SET BRACKETS
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+%PARENTHESES ( ) 
+%\newcommand{\pars}[1]{\left( #1 \right)}
+%INNER PRODUCT BRACKETS
+\newcommand{\ip}[1]{\left\langle #1 \right\rangle}
+%QUICK 2x2, 3x3 MATRICES, QUICK COLUMN
+%\newcommand{\tmatrix}[4]{\begin{pmatrix} #1&#2\\#3&#4\end{pmatrix}}
+%\newcommand{\thmatrix}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9 \end{pmatrix}}
+%\newcommand{\col}[2]{\begin{pmatrix}#1\\#2 \end{pmatrix}}
+%PROOF ENVIRONMENT
+\newcommand{\pf}{\noindent\textit{Proof. }}
+\newcommand{\rdr}{$(\Rightarrow)$ }
+\newcommand{\ldr}{$(\Leftarrow)$ }
+%\newcommand{\tomb}{\hfill $\mathlarger{\mathlarger{\boxtimes}}$ \vspace{10mm}}
+\newcommand{\qed}{\hfill $\blacksquare$ \\}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\la}{\lambda}
+\newcommand{\id}{\text{id}}
+\newcommand{\lin}{\noindent\rule{12.6cm}{0.4pt}}
+\newcommand{\s}{\vspace{2mm}}
+\renewcommand{\d}{\partial}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\hooklongleftarrow}{\longleftarrow\joinrel\rhook}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Sean Eli}
+\date{\today}
+\title{Advanced Algebra II HW2}
+
+
+%\[\begin{tikzcd}
+%A_f \arrow{r}{\varphi_f} \arrow[swap]{d}{\varrho_x^f} & B_g \arrow{d}{\varrho_x^g} \\
+%A_x \arrow{r}{\varphi_y} & B_y
+%\end{tikzcd}
+%\]
+
+\begin{document}
+\maketitle
+
+
+\noindent\textbf{Problem 1.} Determine the splitting field of $p(x) = x^4+2$ over $\QQ$. What is its degree over $\QQ$? is $i$ contained in this splitting field?\s
+
+\pf Let $\omega = e^{i\pi/4} \in \CC$, so the roots for $p(x)$ in $\CC$ are $\omega\sqrt[4]{2}, \omega^3  \sqrt[4]{2},\omega^5  \sqrt[4]{2},$ and $\omega^7 \sqrt[4]{2}$. These all belong to $\QQ(\omega, \sqrt[4]{2})$. The polynomial $p(x)$ is irreducible over $\QQ$ by Eisenstein, therefore $[\QQ(\sqrt[4]{2}):\QQ] = 4$. Also we can check that $\omega = \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i$: since $\sqrt{2} \in \QQ(\sqrt[4]{2})$, it follows that
+\[\QQ(\omega, \sqrt[4]{2}) = \QQ(i,\sqrt[4]{2}).\]
+Therefore $[\QQ(i,\sqrt[4]{2}):\QQ] \le 8$ and is divisible by 4. We also have that $\QQ(\sqrt[4]{2}) \subsetneq  \QQ(i,\sqrt[4]{2})$ since the smaller field is contained in $\RR$, therefore $[\QQ(i,\sqrt[4]{2}):\QQ] = 8$.\s
+
+\noindent To see that $\QQ(i,\sqrt[4]{2})$ is minimal, notice the roots $\set{\omega\sqrt[4]{2}, \omega^3  \sqrt[4]{2},\omega^5  \sqrt[4]{2},\omega^7 \sqrt[4]{2}}$ are the same numbers as $\set{\pm\frac{1}{\sqrt[4]{2}} \pm \frac{1}{\sqrt[4]{2}}i}$. By adding pairs of these we see that the splitting field of $p(x)$ over $\QQ$ must contain $\sqrt[4]{2}$ and $\frac{i}{\sqrt[4]{2}}$, and therefore contains $\QQ(i,\sqrt[4]{2})$. 
+
+
+\qed
+
+
+\noindent\textbf{Problem 2.} Let $\zeta_n = e^{2\pi i / n}$. Show $\zeta_5 \not\in \QQ(\zeta_7)$.\s
+
+\pf We have seen that $[\QQ(\zeta_7):\QQ] = 6$ and $[\QQ(\zeta_5):\QQ] = 4$. If $\zeta_5 \in \QQ(\zeta_7)$ then $\QQ(\zeta_5, \zeta_7) = \QQ(\zeta_7)$, and by the tower law
+\begin{align*}
+6 =  [\QQ(\zeta_5, \zeta_7):\QQ] &= [\QQ(\zeta_5, \zeta_7):\QQ(\zeta_5 )]\,\,[\QQ(\zeta_5):\QQ]\\
+&= [\QQ(\zeta_5, \zeta_7):\QQ(\zeta_5 )]\,\cdot 4.
+\end{align*}
+Thus $4$ divides $6$, a contradiction. \qed
+
+\newpage
+
+
+\noindent\textbf{Problem 3.} Let $K / F$ be a finite field extension. Show that $K$ is a splitting field over $F$ iff every irreducible $p(x)\in F[x]$ with a root in $K$ splits completely in $K[x]$.\s
+
+\pf \ldr Suppose every irreducible $p(x)\in F[x]$ with a root in $K$ splits completely in $K[x]$. Since $K$ is a finite extension of $F$, there exists a basis $\alpha_1,...,\alpha_n$ of $K / F$. Since each minimal polynomial $\min_{\alpha_i,F}(x)$ splits in $K[x]$, $K$ contains all roots of
+\[g(x):= {\min}_{\alpha_1,F}(x) \hdots {\min}_{\alpha_n,F}(x).\]
+$K$ is the splitting field for $g(x)$ over $F$, since if $L/F$ is any extension such that $L$ contains all roots of $g(x)$, then $L$ contains $F(\alpha_1,...,\alpha_n) \cong K$.\s
+
+\noindent\rdr Suppose $K$ is the splitting field of a general polynomial $f(x) \in F[x]$, and let $p(x) \in F[x]$ be an irreducible polynomial with a root $\alpha \in K$. If $\beta$ is another root of $p(x)$ (that lives in the splitting field for $p(x)$ over $F$) then there exists a field isomorphism $\phi: F(\alpha) \to F(\beta)$ which fixes $F$. \s
+
+\noindent Write $f_\alpha(x) := f(x) \in F(\alpha)[x]$ and $f_\beta(x) := f(x) \in F(\beta)[x]$, and let $K_\alpha$ and $K_\beta$ be splitting fields of $f_\alpha(x)$ and $f_\beta(x)$ over $F(\alpha)$ and $F(\beta)$, respectively. Since $\phi\vert_F = \id$, the ring isomorphism $F(\alpha)[x]\to F(\beta)[x]$ induced by $\phi$ sends $f_\alpha(x)$ to $f_\beta(x)$. By Theorem 27 in Dummit \& Foote, $\phi$ extends to an isomorphism $\tilde \phi: K_\alpha \to K_\beta$ of the splitting fields. Since we assumed $\alpha \in K$, we have $F(\alpha)\subset K$, and by applying the argument above to the identity map $F(\alpha)\to F(\alpha)$ it follows that $K_\alpha \cong K$. To summarize, all rows are isomorphisms in the following: \vspace{-3mm}
+\begin{center}
+\begin{tikzcd}
+K  \arrow[r, "\cong"] & K_\alpha \arrow[r, "\tilde\phi"]  & K_\beta\\
+F(\alpha)  \arrow[r, "\id"] \arrow[u] & F(\alpha) \arrow[r, "\phi"]  \arrow[u]& F(\beta) \arrow[u]\\
+& F  \arrow[ul] \arrow[u] \arrow[ur]& 
+\end{tikzcd}
+\end{center}
+\vspace{-5mm}
+Consider adjoining $\beta$ to $K$: 
+\begin{center}
+\begin{tikzcd}
+K(\beta) \arrow[r,dashed] &  K_\beta(\beta) = K_\beta\\
+K  \arrow[r, "\cong"] \arrow[u]& K_\beta \arrow[u]
+\end{tikzcd}
+\end{center}
+The isomorphism $K\to K_\beta$ induces an isomorphism of the extensions $K(\beta)\to K_\beta$, and it follows that
+$[K(\beta):K] = [K_\beta: K_\beta] = 1.$
+Thus $\beta \in K$. This is true for any root of $p(x)$ so $p$ splits over $K$. \qed
+
+
+\newpage
+
+\noindent\textbf{Problem 4.} Let $K_1$ and $K_2$ be finite extensions of a field $F$ contained in a field $K$. Suppose $K_1$ and $K_2$ are both splitting fields. Show $K_1\cap K_2$ and $K_1K_2$ are splitting fields over $F$.\s
+
+\pf Suppose $K_1$ and $K_2$ are splitting fields for polynomials $f_1(x),f_2(x)\in F[x]$, respectively. Let $L$ be the splitting field for $p(x) = f_1(x)f_2(x)$; since $K_1K_2$ contains all roots of $f_1$ and $f_2$, $L \subset K_1K_2$. But since $f_1(x)$ splits over $L$, $K_1\subset L$. Similarly $K_2 \subset L$ therefore $K_1K_2\subset L$.\s
+
+\noindent Notice $K_1\cap K_2$ is a finite extension of $F$. To see that $K_1\cap K_2$ is a splitting field, suppose $p(x)\in F[x]$ is irreducible over $F$, and has a root $\alpha \in K_1\cap K_2$. Since $K_1$ and $K_2$ are splitting fields, $p(x)$ splits into linear factors over $K_1$ and over $K_2$, i.e. all roots of $p(x)$ are in $K_1\cap K_2$. By the previous exercise, $K_1\cap K_2$ is a splitting field.\qed
+
+
+
+
+
+\noindent\textbf{Problem 5.} Let $a\ge 2$ and let $n,d$ be positive integers. Show $d \vert n$ iff $a^d - 1 \vert a^n  - 1$. Conclude that containment of finite fields $\mathbb{F}_{p^d}\subset \mathbb{F}_{p^n}$ is possible iff $d \vert n$.\s
+
+\pf 
+
+\qed
+
+
+\noindent\textbf{Problem 6.} Let $p$ be a prime number. Show $f(x)^p = f(x^p)$ for any $f(x) \in \mathbb{F}_p[x]$.\s
+
+\pf The binomial theorem shows $(x+y)^p = \sum_{k=0}^p {p \choose k}x^k y^{p-k}$; the binomial coefficient is divisible by $p$ iff $k\ne 0$ or $p$, so in $\mathbb{F}_p$ we have $(x+y)^p= x^p + y^p$. Thus if $f(x) = a_nx^n + ... + a_1 x + a_0 \in \mathbb{F}_p[x]$, 
+\begin{align*}
+(a_nx^n + ... + a_1 x + a_0)^p &=a_n^p(x^p)^n + a_{n-1}^p(x^p)^{n-1} + ... + a_0^p.
+\end{align*}
+By Fermat's little theorem, $a^p \equiv a$ mod $p$ whenever $a \in \ZZ$ and $p$ is prime, thus $x^p = x$ in $\mathbb{F}_p$. This means the $p$th powers of coefficients above are just $a_n,...,a_0$, and we have shown $f(x)^p = f(x^p)$. 
+\qed
+
+\noindent\textbf{Problem 7.} Let $K$ be a field of characteristic $p$ which is not perfect, i.e. $K \ne K^p$. Prove there exists an irreducible inseparable polynomial in $K[x]$. Conclude there exists finite inseparable extensions of $K$.\s
+
+\pf If $K\ne K^p$ there exists $\alpha\in K$ which is not a $p$-th power: then the polynomial $f(x) = x^p - \alpha \in K[x]$ is inseparable, since $D_x f(x) = 0$, and thus $\alpha$ is a root of $f(x)$ and $D_xf(x)$. To see that $f(x)$ is irreducible, 
+
+\qed
+
+
+
+
+
+
+%%%
+%\bibliographystyle{plain}
+%%%
+%\bibliography{mybib}
+
+
+\hfill \eject \end{document}
