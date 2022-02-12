@@ -1,0 +1,187 @@
+\documentclass[12pt]{article}
+%\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz-cd}
+%\usepackage{mathtools}
+\usepackage{enumerate}
+%\usepackage{natbib}
+%\usepackage{lmodern}
+%\usepackage{relsize}
+\usepackage{graphicx}
+  \DeclareGraphicsExtensions{.pdf,.png}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=4cm]{geometry}
+%\usepackage[usenames,dvipsnames]{xcolor}%\usepackage{tikz}%\usepackage{verbatim}%\usetikzlibrary{patterns}%\usetikzlibrary{arrows}
+\usepackage{amsfonts}
+%\usepackage{xfrac}
+\usepackage{bm}%\usepackage{makeidx}%\usepackage{xfrac}%\usepackage[perpage,para,symbol*]{footmisc}
+%Quick blackboard bold
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\EE}{\mathbb{E}}
+%ABSOLUTE VALUE BRACKETS
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+%SET BRACKETS
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+%PARENTHESES ( ) 
+%\newcommand{\pars}[1]{\left( #1 \right)}
+%INNER PRODUCT BRACKETS
+\newcommand{\ip}[1]{\left\langle #1 \right\rangle}
+%QUICK 2x2, 3x3 MATRICES, QUICK COLUMN
+%\newcommand{\tmatrix}[4]{\begin{pmatrix} #1&#2\\#3&#4\end{pmatrix}}
+%\newcommand{\thmatrix}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9 \end{pmatrix}}
+%\newcommand{\col}[2]{\begin{pmatrix}#1\\#2 \end{pmatrix}}
+%PROOF ENVIRONMENT
+\newcommand{\pf}{\noindent\textit{Proof. }}
+\newcommand{\rdr}{$(\Rightarrow)$ }
+\newcommand{\ldr}{$(\Leftarrow)$ }
+%\newcommand{\tomb}{\hfill $\mathlarger{\mathlarger{\boxtimes}}$ \vspace{10mm}}
+\newcommand{\qed}{\hfill $\blacksquare$ \\}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\la}{\lambda}
+\newcommand{\id}{\text{id}}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\FF}{\overline{\mathbb{F}}}
+\newcommand{\lin}{\noindent\rule{12.6cm}{0.4pt}}
+\newcommand{\s}{\vspace{2mm}}
+\renewcommand{\d}{\partial}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\hooklongleftarrow}{\longleftarrow\joinrel\rhook}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Sean Eli}
+\date{\today}
+\title{Advanced Algebra II HW3}
+
+
+%\[\begin{tikzcd}
+%A_f \arrow{r}{\varphi_f} \arrow[swap]{d}{\varrho_x^f} & B_g \arrow{d}{\varrho_x^g} \\
+%A_x \arrow{r}{\varphi_y} & B_y
+%\end{tikzcd}
+%\]
+
+\begin{document}
+\vspace{-5mm}
+\maketitle
+
+
+\noindent\textbf{Problem 1a.} Suppose $A$ is a square complex matrix with $A^k = I$. $A$ is diagonalizable.\s
+
+\pf If $A^k = I$ then the minimal polynomial of $A$ divides $x^k - 1$, which is separable over $\CC$. So the minimal polynomial of $A$ has distinct roots. This means the elementary divisors for $A$ are linear factors, so the Jordan form of $A$ is diagonal. \s
+
+\noindent\textbf{Problem 1b.} The matrix $A = \begin{pmatrix}1 & \alpha \\0 & 1 \end{pmatrix}$ over $\mathbb{F}_p$, with $\alpha \ne 0$, cannot be diagonalized even though $A^p = I$.\s
+
+\pf The characteristic polynomial of $A$ is $c(x) =(x-1)^2$, so the only eigenvalue of $A$ is 1. A basis for the nullspace of $A - 1I$ is $(1,0)^t$, so the eigenspace $E_1$ is 1-dimensional. Thus there is no basis for $\mathbb{F}_p^2$ consisting of eigenvectors of $A$. \qed
+
+
+
+\noindent\textbf{Problem 2.} Find the rational canonical form of the Frobenius map $\phi :\mathbb{F}_{p^n}\to \mathbb{F}_{p^n}$.\s
+
+\pf To do this, we need to find the minimal polynomial of $\phi$. Recall from class that $a^{p^n} =a$ for all $a \in \mathbb{F}_{p^n}$, therefore $\phi^n = I$. Since $\mathbb{F}_{p^n}$ is a dimension $n$ vector space over $\mathbb{F}_{p}$, the characteristic polynomial $c(x)$ of $\phi$ has degree $n$: it follows that $c(x) = x^n - 1$. Suppose the minimal polynomial for $\phi$ over $\mathbb{F}_p$ is $m(x) = \sum_{i=0}^k b_i x^i$ where $k < n$. Then, for each $a \in \mathbb{F}_{p^n},$
+\[ 0 = m(\phi)(a) = \sum_{i=0}^k b_i \phi(a)^i = \sum_{i=0}^k b_i a^{p^i}.\] So each $a \in \mathbb{F}_{p^n}$ is a root of the polynomial $\sum_{i=0}^k b_i x^{p^i}$, which has degree $p^k$. There are at most $p^k$ such roots, contradicting the order of $\mathbb{F}_{p^n}$. Thus, the minimal polynomial has degree $n$, and is $x^n - 1$. Snce the invariant factors of $\phi$ divide the minimal polynomial, and their product is the characteristic polynomial, it follows that there is only one invariant factor, $x^n - 1$. So the RCF is the companion matrix for $x^n - 1$:
+\[ \begin{pmatrix} 
+0 & 0 & \hdots & 0 & 1\\
+1 & 0 & & 0 & 0\\
+0 & 1 & 0 & \hdots & 0\\
+0 & \vdots & \vdots & \vdots & 0\\
+0 & \hdots & \hdots & 1 & 0
+\end{pmatrix}\]\qed 
+
+
+
+
+\noindent\textbf{Problem 3.} There are only finitely many roots of unity in a finite extension $K /\QQ$.\s
+
+\pf Let $[K:\QQ] = n$, so any $\alpha \in K$ is the root of a degree $\le n$ polynomial over $\QQ$. If $\zeta \in K$ is a root of unity, then (since $\zeta$ generates some group of roots of unity), $\zeta$ is a primitive $m$-th root of unity for some $m$. This means $\zeta$ is the root of the $m$-th cyclotomic polynomial $\Phi_m(x)$. Since $\Phi_m(x)$ is irreducible over $\QQ$ and has degree $\phi(m)$, we have $\phi(m) \le n$. \s
+
+\noindent There are finitely many cyclotomic polynomials with degree smaller than $n$. This is because Euler's phi-function satisfies $\phi(m)\to \infty$ as $m\to \infty$ (so there are finitely many $m$ with $\phi(m) \le n$). Since any root of unity $\zeta \in K$ is the root of a cyclotomic polynomial $\Phi_m(x)$ with $\phi(m)\le n$, we conclude there are finitely many roots of unity in $K$. 
+
+\qed
+
+\noindent\textbf{Problem 4.} Suppose $d_1, d_2,$ and $d_1d_2$ are not squares in $\QQ^\times$. Show $K/F := \QQ(\sqrt{d_1},\sqrt{d_2}) / \QQ$ is Galois and its Galois group is the Klein four group. Is the converse true?\s
+
+\pf Since $\sqrt{d_1}$ and $\sqrt{d_2}$ are algebraic over $F$ of degree 2 (and $d_1 \ne d_2$), $[K:F] \le 4$. BWOC, if $\sqrt{d_2} \in \QQ(\sqrt{d_1})$, then $\sqrt{d_2} = a + b \sqrt{d_1}$ for rational $a,b$, which implies $d_2 = a^2 + b^2d_1 + 2ab\sqrt{d_1}$. Thus $\sqrt{d_1} \in \QQ$ which is impossible. It follows that \vspace{-2mm} 
+\[[K:F] = [K : \QQ(\sqrt{d_1})][\QQ(\sqrt{d_1}) : \QQ] = 4.\]
+Elements of $\Aut (K/F)$ permute the roots of $x^2 - d_1$ and of $x^2 - d_2$, so there are four automorphisms (the roots of $x^2 - d_1$ must be swapped or fixed. The same is true for the other polynomial. There are four possibilities). Therefore $[K:F]$ is Galois. The Galois group $\Aut (K/F)$ is the Klein four group $\set{1,f,g,fg}$, since $f$ and $g$ are automorphisms which swap the roots of precisely one of $x^2 - d_1$ or $x^2 - d_2$, and $fg$ is their composition. \vspace{-2mm}
+
+\noindent Next suppose $K/\QQ$ is a Galois extension with $\Aut (K/\QQ) \cong \set{1,f,g,fg}$. Consider the subgroups $\ip{f},\ip{g},$ and $\ip{fg}$, which are all $\cong \ZZ/2\ZZ$. By the fundamental theorem of Galois theory, the corresponding fixed fields contained in $K$ are all degree 2 (so the only intermediate fields are degree 2 extensions of $\QQ$). Also there are no containments among these three intermediate fields. Since they are quadratic extensions, the intermediate fields are $\QQ(\sqrt{d_1}), \QQ(\sqrt{d_2})$, and $\QQ(\sqrt{d_3})$ for rational numbers $d_1, d_2, d_3$ which are not squares in $\QQ$. Then $\QQ(\sqrt{d_1},\sqrt{d_2}) \subset K$ and by considering degrees, these fields are the same. It follows that $d_3 = d_1d_2$. \qed
+
+
+\newpage
+
+
+
+\noindent\textbf{Problem 5.} Determine all the subfields of the splitting field of $x^8 - 2 \in \QQ[x]$ that are Galois extensions of $\QQ$.\s
+
+\pf The splitting field of $x^8 - 2$ over $\QQ$ is $\QQ(i, \sqrt[8]{2})$, which is a Galois extension (splitting field of a separable polynomial) of degree $16$ over $\QQ$. The subgroup and intermediate field lattices of  $\QQ(i, \sqrt[8]{2})/\QQ$ are given in section 14.2 of the textbook. 
+\begin{enumerate}
+\item Since quadratic extensions of $\QQ$ are Galois, the subfields $\QQ(i)$, $\QQ(\sqrt{2})$, and $\QQ(i \sqrt{2})$ are Galois extensions of $\QQ$.
+\item $\QQ(i\sqrt[4]{2})$ does not contain $\sqrt[4]{2}$, but it contains a root of the irreducible $x^2 - 4$. Thus, this is not a splitting field, and therefore not Galois. Similarly $\QQ(\sqrt[4]{2})$ is not Galois. $\QQ(i,\sqrt{2})$ is the splitting field of the separable polynomial $(x^2 + 1)(x^2 - 2)$ and is thus Galois. Notice, in the subgroup diagram, the subgroups $\ip{\tau \sigma^3}$ and $\ip{\tau \sigma}$ are conjugate: thus, neither is normal, so their corresponding fields $\QQ((1+i)\sqrt[4]{2})$ and $\QQ((1-i)\sqrt[4]{2})$ are not Galois. Among degree 4 intermediate extensions, only $\QQ(i,\sqrt{2})$ is Galois over $\QQ$.
+\item Next are degree 8 extensions. $\QQ(i, \sqrt[4]{2})$ is the splitting field of the separable polynomial $x^4 - 2$ over $\QQ$, and is thus Galois. $\QQ(\sqrt[8]{2})$ contains exactly one root of the irreducible $x^8 - 2$ and is thus not Galois. Let $\zeta$ be a primitive eighth root of unity. Similarly, none of the fields $\QQ( i \sqrt[8]{2}), \QQ(\zeta^3 \sqrt[8]{2}),$ and $\QQ(\zeta \sqrt[8]{2})$ contains all roots of $x^8 - 2$ and are therefore not Galois over $\QQ$.
+\end{enumerate}
+The only intermediate Galois extensions of $\QQ$ are $\QQ(i), \QQ(\sqrt{2}),\QQ(i \sqrt{2}), \QQ(i,\sqrt{2}), \QQ(i, \sqrt[4]{2}),$ and $\QQ(i, \sqrt[8]{2})$.
+
+\qed
+
+
+\noindent\textbf{Problem 6a.} Let $K/F$ be a finite separable extension. Fix an algebraic closure $\FF$ and an embedding $\iota : F \hookrightarrow \FF$. Show there are exactly $[K:F]$ embeddings $\sigma : K \hookrightarrow \FF$ that extend $\iota$.\s
+
+\pf Induct on $[K:F]$. If $[K:F] = 1$ then $K = F$ so there is exactly one embedding $K \hookrightarrow \FF$ extending $\iota$, namely $\iota$. \s
+
+\noindent Suppose whenever $E/ F_2$ is any separable extension with $1\le [E: F_2] < n$, and $\tau : F_2 \hookrightarrow \FF$ is an embedding, then there are exactly $[E :F_2]$ embeddings $E \hookrightarrow \FF$ extending $\tau$. If $[K:F] = n$ then there exists $\alpha \in K \setminus F$ of degree $\ge 2$. Notice $F(\alpha) \subset K$ so $F(\alpha)$ is a separable extension of $F$, and by the inductive hypothesis there are exactly $[F(\alpha) :F]$ embeddings $F(\alpha) \hookrightarrow \FF$ which extend $\iota : F\hookrightarrow \FF$. Call these $\sigma_1,...,\sigma_k$. Also $K / F(\alpha)$ is a finite separable extension of degree $< n$, so by the inductive hypothesis, for each $\sigma_i : F(\alpha) \to \FF$, there are exactly $[K:F(\alpha)]$ embeddings $K\to \FF$ extending $\sigma_i$. This yields $[K:F]$ embeddings of $K$ into $\FF$ which extend $\iota$. (something must be wrong since ``separable" was not really used ... )\s
+
+
+\noindent\textbf{Problem 6b.} Suppose $K/F$ is Galois. The restriction of an $F$-embedding $\sigma: K \hookrightarrow \FF$ to $K$ gives an element of $\Aut(K/F)$.\s
+
+\pf I am not sure what to show: is the problem asking to show that for all $n$ $F$-embeddings $\sigma_1,...,\sigma_n$, their images are the same sets $\sigma_1(K) = .. = \sigma_n(K)$?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%
+%\bibliographystyle{plain}
+%%%
+%\bibliography{mybib}
+
+
+\hfill \eject \end{document}
